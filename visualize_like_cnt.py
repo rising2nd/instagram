@@ -66,21 +66,39 @@ def plot_like_count_over_time(df: pd.DataFrame, start_date_str: str, like_thresh
     start_date = pd.to_datetime(start_date_str)
     filtered_df = df[df[timestamp_column] >= start_date].copy()
 
+    plt.rcParams['font.size'] = 14       # 全体のフォントサイズ
+    plt.rcParams['axes.labelsize'] = 16   # 軸ラベル
+    plt.rcParams['xtick.labelsize'] = 16  # X軸目盛り
+    plt.rcParams['ytick.labelsize'] = 16  # Y軸目盛り
+    plt.rcParams['legend.fontsize'] = 16  # 凡例
+    plt.rcParams['figure.titlesize'] = 12  # 図のタイトル
+
     plt.figure(figsize=(12, 6))
     plt.plot(filtered_df[timestamp_column], filtered_df[like_column])
-    plt.xlabel('日時 (JST)')
+    plt.xlabel('投稿日 (JST)')
     plt.ylabel('いいね数')
-    plt.title(f'{start_date_str}以降のいいね数の時系列推移')
+    plt.title(f'いいね数の時系列推移')
     plt.grid(True)
 
+    # 文字の位置が重ならないように制御する
+    previous_x_offset = -10
+    previous_y_offset = 0
     for index, row in filtered_df[filtered_df[like_column] >= like_threshold].iterrows():
-        caption_text = str(row.get(caption_column, 'なし'))[:caption_length] + '...'
+        caption_text_raw = str(row.get(caption_column, 'なし'))
+        caption_text = caption_text_raw.replace('\n', '')[:caption_length] + '...'
+
+        current_x_offset = previous_x_offset + 5
+        current_y_offset = previous_y_offset - 5        
+
         plt.annotate(caption_text,
                      (row[timestamp_column], row[like_column]),
                      textcoords="offset points",
-                     xytext=(0, 10),
+                     xytext=(current_x_offset, current_y_offset),
                      ha='center',
-                     fontsize=8)
+                     fontsize=10)
+
+        previous_x_offset = current_x_offset
+        previous_y_offset = current_y_offset       
 
     plt.tight_layout()
     plt.show()
