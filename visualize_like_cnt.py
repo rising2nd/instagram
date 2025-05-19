@@ -112,8 +112,8 @@ def visualize_like_cnt(api_version: str, user_id: str, access_token: str):
         plot_like_count_over_time(
             df=results_df,
             start_date_str='2023-02-10',
-            like_threshold=20,
-            caption_length=20,
+            like_threshold=21,
+            caption_length=10,
             timestamp_column='timestamp_jst',
             like_column='like_count',
             caption_column='caption'
