@@ -1,13 +1,7 @@
 #%%
-import os
-import requests
-import json
-from tqdm import tqdm
 import pandas as pd
-import datetime
-from dateutil.parser import isoparse
 import matplotlib.pyplot as plt
-import matplotlib_fontja
+import matplotlib_fontja  # matplotlibで日本語を表示する
 from config import ACCESS_TOKEN, USER_ID, API_VERSION
 from src import convert_timestamp_to_jst_formatted, fetch_my_posts
 
@@ -56,12 +50,18 @@ def plot_like_count_over_time(df: pd.DataFrame, start_date_str: str, like_thresh
     plt.show()
 
 
-def visualize_like_cnt(api_version: str, user_id: str, access_token: str):
+def visualize_like_cnt(
+    api_version: str,
+    user_id: str,
+    access_token: str,
+    num_iterations=100
+):
     """いいね数の時系列推移を可視化するメイン関数。"""
     results_df = fetch_my_posts(
         api_version=api_version,
         user_id=user_id,
-        access_token=access_token
+        access_token=access_token,
+        num_iterations=num_iterations
     )
 
     if not results_df.empty:
