@@ -1,0 +1,18 @@
+[project]
+name = "instagram"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "scikit-learn",
+    "pandas",
+    "matplotlib",
+    "numpy",
+    "mecab-python3",
+    "ipadic",
+    "ipykernel>=6.29.5",
+    "requests>=2.32.3",
+    "tqdm>=4.67.1",
+    "matplotlib-fontja>=1.1.0",
+]
