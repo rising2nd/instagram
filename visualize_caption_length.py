@@ -44,7 +44,7 @@ def plot_target_column_over_time(
     plt.rcParams['figure.titlesize'] = 12  # 図のタイトル
 
     fig, ax = plt.subplots(figsize=(12, 6)) # FigureとAxesオブジェクトを明示的に作成
-    ax.plot(filtered_df[timestamp_column], filtered_df[target_column])
+    ax.plot(filtered_df[timestamp_column], filtered_df[target_column], color='orange')
     ax.set_xlabel('投稿日')
     ax.set_ylabel(f'{title}')
     ax.set_title(f'{title}の時系列推移')
