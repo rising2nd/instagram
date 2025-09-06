@@ -29,12 +29,13 @@ T 形式のタイムスタンプ文字列 (例: '2025-04-23 21:51').
         print(f"Warning: Could not parse timestamp string: {timestamp_str}")
         return None
 
-def get_all_my_posts(
+def fetch_my_posts(
     user_id: str,
     access_token: str,
     api_version: str,
     num_iterations: int = 100
-) -> pd.DataFrame :
+) -> pd.DataFrame:
+    """InstagramのメディアデータをAPIから取得する"""
 
     # --------
     # エンドポイントURLの作成
@@ -97,5 +98,7 @@ def get_all_my_posts(
 
     # データフレームに変換する
     results_df = pd.DataFrame(results)
+
+    print(f"The maximum value of the timestamp is: {max(results_df['timestamp_jst'])})")
 
     return results_df
