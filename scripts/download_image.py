@@ -1,3 +1,4 @@
+#%%
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib_fontja  # matplotlibで日本語を表示する
@@ -33,7 +34,7 @@ def make_img_url(
 def get_img(
     img_url: str,
     result_dict: dict,
-    destination_folder_path: str = "/Users/st/workspace/instagram/data/raw/imgs"
+    destination_folder_path: str = "/Users/st/workspace/instagram//data/raw/imgs/"
 ) -> None:
 
     timestamp_jst = result_dict["timestamp_jst"]
@@ -55,12 +56,16 @@ def download_img(
 ) -> None:
 
     # データを読み込む
-    results_df = fetch_my_posts(
-        api_version=api_version,
-        user_id=user_id,
-        access_token=access_token,
-        num_iterations=num_iterations
-    )
+    if 'results_df' not in locals() and 'results_df' not in globals():
+        # データを読み込む
+        results_df = fetch_my_posts(
+            api_version=API_VERSION,
+            user_id=USER_ID,
+            access_token=ACCESS_TOKEN,
+            num_iterations=150
+        )
+    else:
+        print("results_df は既にメモリに存在するため、データ読み込みをスキップしました。")
 
     # serch_termのデータを抽出する
     result_dict = filter_df(
@@ -80,7 +85,7 @@ def download_img(
 
 if __name__ == '__main__':
 
-    serch_term = "ネイティブキャンプ"
+    serch_term = "これはネイティブキャンプ"
 
     download_img(
         api_version = API_VERSION,
