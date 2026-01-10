@@ -1,5 +1,5 @@
-from src import convert_timestamp_to_jst_formatted, fetch_my_posts
-from config import ACCESS_TOKEN, USER_ID, API_VERSION, DESTINATION_FOLDER_PATH
+from src.src import convert_timestamp_to_jst_formatted, fetch_my_posts
+from src.config import ACCESS_TOKEN, USER_ID, API_VERSION, DESTINATION_FOLDER_PATH
 import pandas as pd
 
 def main():

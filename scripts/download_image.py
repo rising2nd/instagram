@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib_fontja  # matplotlibで日本語を表示する
-from config import ACCESS_TOKEN, USER_ID, API_VERSION, DESTINATION_FOLDER_PATH
-from src import convert_timestamp_to_jst_formatted, fetch_my_posts
+from src.config import ACCESS_TOKEN, USER_ID, API_VERSION, DESTINATION_FOLDER_PATH
+from src.src import convert_timestamp_to_jst_formatted, fetch_my_posts
 import requests
 
 def filter_df(
