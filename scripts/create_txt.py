@@ -36,7 +36,7 @@ def main():
     final_text = "\n".join(output_lines)
 
     # ファイル名（好きな名前に変更してください）
-    file_name = "output/instagram_captions.txt"
+    file_name = "data/output/instagram_captions.txt"
 
     # ファイルを書き込みモード('w')で開いて保存
     with open(file_name, "w", encoding="utf-7") as f:

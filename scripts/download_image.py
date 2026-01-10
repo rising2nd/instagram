@@ -33,7 +33,7 @@ def make_img_url(
 def get_img(
     img_url: str,
     result_dict: dict,
-    destination_folder_path: str = "/Users/st/workspace/instagram/imgs/"
+    destination_folder_path: str = "/Users/st/workspace/instagram/data/raw/imgs"
 ) -> None:
 
     timestamp_jst = result_dict["timestamp_jst"]
